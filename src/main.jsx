@@ -12,7 +12,7 @@ import Planning from "./planning/Planning.jsx";
 createRoot(document.getElementById('root')).render(
   <StrictMode>
       <BrowserRouter>
-          <div className="flex w-full">
+          <div className="flex w-full font-inter">
               <div></div>
               <div className="flex-1">
                   <Routes>
