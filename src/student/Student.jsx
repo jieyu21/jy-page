@@ -1,9 +1,9 @@
-function App() {
+function Student() {
   return (
       <div className="min-h-screen flex justify-center items-center">
-          DeepBeep
+          Student
       </div>
   )
 }
 
-export default App
+export default Student
