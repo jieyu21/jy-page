@@ -14,16 +14,16 @@ function App() {
 
   return (
       <div className="flex w-full font-inter">
-          <div className="bg-[#FAFAFA] border-r border-[#F0F0F0] px-3 py-6 flex flex-col gap-5 max-w-72">
+          <div className={`bg-[#FAFAFA] border-r border-[#F0F0F0] px-3 py-6 ${path !== '/login' ? 'flex' : 'hidden'} flex-col gap-5 max-w-72`}>
               <div className="flex justify-center">
                   <img src={logo} alt="DeepBeep logo" className="h-12"/>
               </div>
               <div
                   className="flex-1 flex flex-col gap-1 *:text-left *:flex text-[#B0B0B0] *:gap-3 *:py-4 *:px-4 *:rounded-lg *:transition">
-                  <a href="/" className={`${path === "/" ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><HomeIcon/>Home</a>
-                  <a href="/class" className={`${path === "/class" ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><BookOpenIcon/>Current Class</a>
-                  <a href="/module" className={`${path === "/module" ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><ShapesIcon/>Modules</a>
-                  <a href="/planning" className={`${path === "/planning" ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><BookTextIcon/>Teaching
+                  <a href="/" className={`${path === '/' ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><HomeIcon/>Home</a>
+                  <a href="/class" className={`${path === '/class' ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><BookOpenIcon/>Current Class</a>
+                  <a href="/module" className={`${path === '/module' ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><ShapesIcon/>Modules</a>
+                  <a href="/planning" className={`${path === '/planning' ? 'bg-[#102A57] text-white' : 'hover:bg-neutral-200 hover:text-black'}`}><BookTextIcon/>Teaching
                       Planner</a>
                   <button className={`hover:bg-neutral-200 hover:text-black`}><CogIcon/>Settings</button>
               </div>
