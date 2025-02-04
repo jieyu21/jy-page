@@ -1,10 +1,10 @@
 import React from "react";
 import pfp from "../assets/pfp.jpg";
-import { useNavigate } from "react-router-dom";
-import bluebg from "../assets/bluebg.png"; 
-import redbg from "../assets/redbg.png"; 
+import doorbell from "../assets/doorbell.png";
 
-const Module = () => {
+import { useNavigate } from "react-router-dom";
+
+const Lesson1 = () => {
   const navigate = useNavigate();
   const lessons = [
     {
@@ -15,26 +15,10 @@ const Module = () => {
       day: "31",
       description: "Flipped Classroom, Demonstration Videos, Case Study Analysis",
     },
-    {
-      id: 2,
-      title: "HCI",
-      topic: "Topics 5 : StoryBoards",
-      time: "1 P.M. - 2 P.M.",
-      day: "2",
-      description: "Collaborative Learning, Flipped Classroom, Case Study Analysis",
-    },
-    {
-      id: 3,
-      title: "HCI",
-      topic: "Topics 6 : Figma",
-      time: "2 P.M. - 3 P.M.",
-      day: "5",
-      description: "Prototype, Demonstration Videos, Case Study Analysis",
-    },
   ];
 
   return (
-    <div className="flex flex-col w-full h-screen bg-gray-50">
+    <div className="flex flex-col w-full h-screen">
       {/* Top Bar */}
       <div className="flex justify-between items-center bg-white border-b border-gray-200 px-6 py-4 w-full">
         <h1 className="text-2xl font-semibold text-[#151d48]">Module</h1>
@@ -51,8 +35,6 @@ const Module = () => {
             {/* Black Background Circles */}
             <div className="absolute w-[53px] h-[53px] bg-[#120008] rounded-full" style={{ left: "0", top: "0" }}></div>
             <div className="absolute w-[53px] h-[53px] bg-[#120008] rounded-full" style={{ left: "58px", top: "0" }}></div>
-
-            {/* Black Box Between Circles */}
             <div
               className="absolute h-[25px] bg-[#120008]"
               style={{
@@ -61,20 +43,16 @@ const Module = () => {
                 top: "14px",
               }}
             ></div>
-
-            {/* Doorbell Button */}
             <button
               onClick={() => alert("Doorbell clicked!")}
               className="absolute w-[30px] h-[31px] top-[11px] left-[70px] bg-transparent"
             >
               <img
-                src="src/assets/doorbell.png"
+                src={doorbell}
                 alt="Doorbell Icon"
                 className="w-full h-full"
               />
             </button>
-
-            {/* User Profile Button */}
             <button
               onClick={() => alert("Profile clicked!")}
               className="absolute w-[45px] h-[45px] top-[5px] left-[4px] rounded-full border border-gray-300 overflow-hidden"
@@ -89,18 +67,18 @@ const Module = () => {
         </div>
       </div>
 
-{/* Main Layout */}
-<div className="flex w-full h-full">
-  {/* Main Content */}
-  <div className="flex-1 bg-white p-4">
-    <h2 className="text-2xl font-semibold text-[#151d48] mb-6">
-      Human Computer Interaction
-    </h2>
+      {/* Main Content */}
+      <div className="flex w-full h-full mt-1">
+        {/* Main Content */}
+        <div className="flex-1 bg-white p-4">
+          <h2 className="text-2xl font-semibold text-[#151d48] mb-4">
+            Human Computer Interaction
+          </h2>
 
-            {/* Lesson Cards */}
-            <div className="relative w-full">
+          {/* Lesson Cards */}
+          <div className="relative w-full">
             {/* See All Button */}
-            <div className="flex justify-end items-center mb-4">
+            <div className="flex justify-end items-center mb-2">
               <button
                 onClick={() => alert("See All Lessons clicked!")}
                 className="text-sm text-[#0052b4] font-semibold"
@@ -119,15 +97,21 @@ const Module = () => {
                   <button
                     key={lesson}
                     onClick={() => navigate(`/lesson/${lesson}`)} // Navigate dynamically
-                    className="flex justify-center items-center p-2 rounded-lg shadow-lg"
+                    className={`flex justify-center items-center p-2 rounded-lg shadow-lg ${
+                      lesson === 1
+                        ? "bg-[#102a57] opacity-100"
+                        : "bg-[#f8f8f8] opacity-60"
+                    }`}
                     style={{
-                      backgroundColor: lesson % 2 === 0 ? "#e5ecf6" : "#e3f5ff",
-                      boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                       minWidth: "140px",
                       height: "60px",
                     }}
                   >
-                    <p className="text-lg font-semibold text-[#151d48]">
+                    <p
+                      className={`text-lg font-semibold ${
+                        lesson === 1 ? "text-white" : "text-[#151d48]"
+                      }`}
+                    >
                       {`Lesson ${lesson}`}
                     </p>
                   </button>
@@ -147,8 +131,8 @@ const Module = () => {
             </div>
           </div>
 
-    {/* Charts and Data */}
-    <div className="grid grid-cols-12 gap-6">
+      {/* Charts and Data */}
+      <div className="grid grid-cols-12 gap-6">
       {/* Histogram */}
       <div className="col-span-7 bg-[#f7f9fb] p-6 rounded-2xl shadow-lg mt-4">
       <h3 className="text-sm font-semibold text-[#1c1c1c] mb-4">Histogram</h3>
@@ -257,7 +241,7 @@ const Module = () => {
 </div>
 
 
- {/* Student List */}
+{/* Student List */}
 <div className="col-span-7 bg-[#f7f9fb] p-6 rounded-2xl shadow-lg">
   <h3 className="text-lg font-semibold text-[#151d48] mb-4">Student List</h3>
   <table className="w-full border-collapse">
@@ -328,10 +312,8 @@ const Module = () => {
 </div>
 
 
-
-
-      {/* Average Class Attention */}
-      <div className="col-span-5 bg-[#f7f9fb] p-6 rounded-2xl shadow-lg">
+   {/* Average Class Attention */}
+   <div className="col-span-5 bg-[#f7f9fb] p-6 rounded-2xl shadow-lg">
         <h3 className="text-sm font-semibold text-[#1c1c1c] mb-4">
           Average Class Attention
         </h3>
@@ -342,45 +324,48 @@ const Module = () => {
     </div>
   </div>
 
-  {/* Right Sidebar - Lesson Planner */}
-  <div className="w-[26%] bg-white border-l border-gray-200 p-3">
-    <div className="bg-white rounded-lg shadow-lg p-3">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold text-[#151d48]">
-          Lesson Planner
-        </h3>
-        <button className="text-[#0052b4] text-sm font-bold">Add</button>
-      </div>
-      {lessons.map((lesson) => (
-        <div
-          key={lesson.id}
-          className="bg-blue-50 rounded-lg p-4 mb-2 border border-gray-200 flex"
-        >
-          {/* Blue Date Icon */}
-          <div className="w-11 h-8 bg-[#0052b4] text-white rounded-lg flex items-center justify-center font-medium text-sm">
-            {lesson.day}
-          </div>
 
-          {/* Lesson Content */}
-          <div className="ml-4">
-            <h4 className="text-[#333333] text-[15px] font-bold">
-              {lesson.title}
-            </h4>
+        {/* Right Sidebar - Lesson 1 Planner */}
+        <div className="w-[30%] bg-white border-l border-gray-200 p-3">
+          <div className="bg-white rounded-lg shadow-lg p-3">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-[#151d48]">
+                Lesson 1 Planner
+              </h3>
+              <button
+                onClick={() => navigate("/planning")} // Navigate to the Planning page
+                className="text-[#0052b4] text-sm font-bold"
+              >
+                View
+              </button>
+            </div>
+            {lessons.map((lesson) => (
+              <div
+                key={lesson.id}
+                className="bg-blue-50 rounded-lg p-4 mb-2 border border-gray-200 flex"
+              >
+                <div className="w-11 h-8 bg-[#0052b4] text-white rounded-lg flex items-center justify-center font-medium text-sm">
+                  {lesson.day}
+                </div>
+                <div className="ml-4">
+                  <h4 className="text-[#333333] text-[15px] font-bold">
+                    {lesson.title}
+                    </h4>
             <p className="text-[#0052b4] text-[10px] font-bold">{lesson.topic}</p>
-            <div className="flex items-center text-[#8a8a8a] text-[10px] font-bold my-2">
+            <div className="flex items-center text-[#8a8a8a] text-[10px] font-bold my-1">
               <div className="w-1.5 h-1.5 bg-[#0052b4] rounded-full mr-2"></div>
               <span>{lesson.time}</span>
             </div>
             <p className="text-[#102a57] text-[11px]">{lesson.description}</p>
           </div>
         </div>
-      ))}
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-    </div>
+  
   );
 };
 
-export default Module;
+export default Lesson1;
